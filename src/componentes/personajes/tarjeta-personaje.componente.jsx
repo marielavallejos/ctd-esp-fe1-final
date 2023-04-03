@@ -1,5 +1,8 @@
 import BotonFavorito from '../botones/boton-favorito.componente';
+import { getPersonajes } from '../reducer/galSlice';
 import './tarjeta-personaje.css';
+import { useAppSelector } from '../../redux/hooks';
+import { useEffect } from 'react';
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
@@ -9,13 +12,16 @@ import './tarjeta-personaje.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaPersonaje = () => {
+const TarjetaPersonaje = ({personaje}) => {
+    const favoritos= useAppSelector((state) => state.favoritos);
+
 
     return <div className="tarjeta-personaje">
-        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
+        <img src={personaje.image} alt={personaje.name}/>
         <div className="tarjeta-personaje-body">
-            <span>Rick Sanchez</span>
-            <BotonFavorito esFavorito={false} />
+            <span>{personaje.name}</span>
+            <BotonFavorito esFavorito={favoritos.favoritos.some(favorito => 
+                favorito.id === personaje.id) ? true : false} tarjetaId={personaje.id} />
         </div>
     </div>
 }
