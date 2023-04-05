@@ -7,12 +7,14 @@ interface Personaje {
     image: string,
     origin: object,
     url:string,
+    esFavorito: boolean,
 }
 
 interface initialType {
     personaje: Personaje[]
     pagina:number,
     loading: boolean
+
 }
 
 export const getPersonajes = createAsyncThunk(
@@ -33,7 +35,7 @@ const initialState: initialType = {
 const galSlice = createSlice({
     name: 'personajes',
     initialState,
-    reducers: {},
+    reducers: { },
     extraReducers: (builder) => {
         builder
             .addCase(getPersonajes.pending, (state) => {
@@ -49,4 +51,4 @@ const galSlice = createSlice({
     }
 })
 
-export default galSlice.reducer
+export default galSlice.reducer;

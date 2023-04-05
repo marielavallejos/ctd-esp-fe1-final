@@ -12,11 +12,12 @@ import { handleFavorito } from '../reducer/favoritos';
 const BotonFavorito = ({esFavorito, onClick, tarjetaId}) => {
     const src = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
     const dispatch = useAppDispatch();
+
     const persFavorito = (id, favorite) => {
         dispatch(handleFavorito(id, favorite));
     }
 
-    return <div className="boton-favorito" onClick={() => persFavorito(tarjetaId, false)}>
+    return <div className="boton-favorito" onClick={() => persFavorito(tarjetaId)}>
         <img src={src} alt={"favorito"} />
     </div>
 }

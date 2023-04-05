@@ -11,7 +11,7 @@ interface initialType {
 }
 
 const initialState: initialType = {
-    favoritos: [{id:4, favorite:true}]
+    favoritos: []
 }
 
 const agregarFavoritos = createSlice({
