@@ -1,11 +1,9 @@
 import { configureStore} from "@reduxjs/toolkit";
-import galSlice from '../componentes/reducer/galSlice'
-import agregarFavoritos from "../componentes/reducer/favoritos";
+import galSlice from '../componentes/reducers/galSlice'
 
 export const store = configureStore({
    reducer: {
       personajes: galSlice,
-      favoritos: agregarFavoritos
    },
 });
 

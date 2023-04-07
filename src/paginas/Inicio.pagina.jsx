@@ -1,7 +1,10 @@
 import Filtros from "../componentes/personajes/filtros.componente"
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
 import Paginacion from "../componentes/paginacion/paginacion.componente";
- 
+import { getPersonajes } from "../componentes/reducers/galSlice";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
  * 
@@ -11,6 +14,14 @@ import Paginacion from "../componentes/paginacion/paginacion.componente";
  * @returns la pagina de inicio
  */
 const PaginaInicio = () => {
+    const [page, setPage] = useState(1);
+    const dispatch = useAppDispatch();
+    const personajes = useAppSelector(state=> state.personajes.personaje)
+
+
+    useEffect(() => {
+        dispatch(getPersonajes(page));
+    }, [page])
 
 
     return <div className="container">
@@ -20,7 +31,7 @@ const PaginaInicio = () => {
         </div>
         <Filtros />
         <Paginacion />
-        <GrillaPersonajes />
+        <GrillaPersonajes personajes={personajes} />
         <Paginacion />
     </div>
 }
