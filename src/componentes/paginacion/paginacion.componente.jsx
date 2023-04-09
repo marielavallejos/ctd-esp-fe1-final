@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from '../../redux/hooks';
-import { getPersonajes } from '../reducers/galSlice';
+
 import './paginacion.css';
 
 
