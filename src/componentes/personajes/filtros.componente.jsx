@@ -1,10 +1,7 @@
 
 import './filtros.css';
 
-
-
-const Filtros = () => {
-
+const Filtros = ({inputRef, busqueda, value}) => {
 
     return <div className="filtros">
         <label htmlFor="nombre">Filtrar por nombre:</label>
@@ -12,7 +9,9 @@ const Filtros = () => {
         type="text" 
         placeholder="Rick, Morty, Beth, Alien, ...etc" 
         name="nombre"
-/>
+        value={value}
+        onChange={busqueda}
+        ref={inputRef}/>
     </div>
 }
 

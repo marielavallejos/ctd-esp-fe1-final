@@ -12,29 +12,15 @@ import './paginacion.css';
  * 
  * @returns un JSX element 
  */
-const Paginacion = () => {
+const Paginacion = ({anterior, proxima}) => {
 
-    const[page, setPage] = useState(1);
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        dispatch(getPersonajes(page))
-    }, [page])
-
-    const handleNext = () => {
-        setPage(page + 1);
-    }
-
-    const handlePrev = () => {
-        setPage(page-1);
-    }
-
+    
     return <div className="paginacion">
-        <button onClick={handlePrev} disabled={page >1 ? false: true } className={"primary"}>Anterior
+        <button onClick={anterior} disabled={false} className={"primary"}>Anterior
 
         </button>
 
-        <button onClick={handleNext} disabled={false} className={"primary"}>Siguiente
+        <button onClick={proxima} disabled={false} className={"primary"}>Siguiente
         
         </button>
     </div>

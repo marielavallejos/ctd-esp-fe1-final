@@ -10,13 +10,11 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  * @returns un JSX element 
  */
 const GrillaPersonajes = ({personajes}) => {
-    
-
     return <div className="grilla-personajes">
-{
+        {
             personajes?.map((pers)  => (    
             <TarjetaPersonaje personaje={pers} key={pers.id} />))
-}
+        }
     </div>
 }
 export default GrillaPersonajes;

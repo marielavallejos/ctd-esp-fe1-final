@@ -6,24 +6,29 @@ interface Personaje {
     name: string,
     gender: string,
     image: string,
-    origin: object,
     url:string,
-    esFavorito: boolean,
 }
 
 interface initialType {
-    value: string,
     personaje: Personaje[]
     favoritos: Personaje[]
-    pagina:number,
+    input: string,
+    
     loading: boolean,
-    error:boolean
+    error:string
+}
 
-
+const initialState: initialType = {
+    personaje: [],
+    favoritos: [],
+    input: '',
+ 
+    loading: false,
+    error:''
 }
 
 export const getPersonajes = createAsyncThunk(
-    'personajes',
+    'galeriaPersonajes',
     async (page: number) => {
         const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
         const parseRes = await res.json()
@@ -31,14 +36,16 @@ export const getPersonajes = createAsyncThunk(
     }
 )
 
-const initialState: initialType = {
-    value: "",
-    personaje: [],
-    favoritos: [],
-    pagina:1,
-    loading: false,
-    error:false
-}
+export const getFiltrados= createAsyncThunk(
+    'filtrados',
+    async (name: string) => {
+        const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${name}`)
+        const parseRes = await res.json()
+        return parseRes.results
+    }
+)
+
+
 
 const galSlice = createSlice({
     name: 'personajes',
@@ -51,34 +58,57 @@ const galSlice = createSlice({
                 state.favoritos = state.favoritos.filter(favorito => favorito.id !== action.payload.id);
             }
         },
-        // Para boton test
         borrarFavorito: (state) => {
             state.favoritos = initialState.favoritos;
         },
 
-        //Filtro por nombre
-        busqueda: (state, action) => {
-            state.value= action.payload
+        //Filtro 
+        buscarPersonaje: (state, action) => {
+            state.input= action.payload
         },
-        limpiarFiltro: (state, action) => {
-            state.value = ""
+        borrarFiltro: (state) => {
+            state.input = initialState.input;
         }
     },
     extraReducers: (builder) => {
         builder
             .addCase(getPersonajes.pending, (state) => {
-                state.loading = true
+                state.loading = true;
+                state.personaje= initialState.personaje;
+                state.error=initialState.error;
             })
             .addCase(getPersonajes.fulfilled, (state, action) => {
-                state.loading = false
+                state.loading = false;
                 state.personaje = action.payload;
+                state.error=initialState.error;
             })
             .addCase(getPersonajes.rejected, (state, action) => {
-                state.loading = false
+                state.loading = false;
+                state.personaje=initialState.personaje;
+                state.error="No se econtraron personajes";
             })
+
+            .addCase(getFiltrados.pending, (state) => {
+                state.loading = true;
+                state.personaje= initialState.personaje;
+                state.error=initialState.error;
+            })
+            .addCase(getFiltrados.fulfilled, (state, action) => {
+                state.loading = false;
+                state.personaje = action.payload;
+                state.error=initialState.error;
+            })
+            .addCase(getFiltrados.rejected, (state, action) => {
+                state.loading = false;
+                state.personaje=initialState.personaje;
+                state.error="No se enonctró ningún personaje con ese nombre";
+            })
+
+
+
 
     }
 })
 
-export const {marcarFavorito, borrarFavorito} = galSlice.actions;
+export const {marcarFavorito, borrarFavorito, buscarPersonaje, borrarFiltro} = galSlice.actions;
 export default galSlice.reducer;
