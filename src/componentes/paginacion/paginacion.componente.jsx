@@ -10,16 +10,22 @@ import './paginacion.css';
  * 
  * @returns un JSX element 
  */
-const Paginacion = ({anterior, proxima}) => {
+const Paginacion = ({anterior, proxima, page}) => {
 
     
     return <div className="paginacion">
-        <button onClick={anterior} disabled={false} className={"primary"}>Anterior
-
+        <button 
+        onClick={anterior} 
+        disabled={page > 1 ? false : true} 
+        className={"primary"}>
+            Anterior
         </button>
 
-        <button onClick={proxima} disabled={false} className={"primary"}>Siguiente
-        
+        <button 
+        onClick={proxima} 
+        disabled={false} 
+        className={"primary"}>
+            Siguiente
         </button>
     </div>
 }

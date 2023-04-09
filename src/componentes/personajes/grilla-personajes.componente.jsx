@@ -1,7 +1,6 @@
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 
-
 /**
  * Grilla de personajes para la pagina de inicio
  * 
@@ -9,6 +8,7 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  *  
  * @returns un JSX element 
  */
+
 const GrillaPersonajes = ({personajes}) => {
     return <div className="grilla-personajes">
         {

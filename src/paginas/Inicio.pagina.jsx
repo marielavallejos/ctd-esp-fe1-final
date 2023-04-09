@@ -5,15 +5,14 @@ import { borrarFiltro, buscarPersonaje, getFiltrados, getPersonajes } from "../c
 import { useEffect, useState, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
-
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
  * 
  * Uso: 
  * ``` <PaginaInicio /> ```
- * 
  * @returns la pagina de inicio
  */
+
 const PaginaInicio = () => {
     const [page, setPage] = useState(1);
     const dispatch = useAppDispatch();
@@ -47,7 +46,6 @@ const PaginaInicio = () => {
         setPage(page-1);
     }
 
-
     return <div className="container">
         <div className="actions">
             <h3>Catálogo de Personajes</h3>
@@ -57,9 +55,9 @@ const PaginaInicio = () => {
         inputRef={inputRef}
         busqueda={(e) => setFiltro(e.target.value)} 
         value={filtro}/>
-        <Paginacion anterior = {handlePrev} proxima= {handleNext}/>
+        <Paginacion anterior = {handlePrev} proxima= {handleNext} page= {page}/>
         <GrillaPersonajes personajes={personajes} />
-        <Paginacion anterior = {handlePrev} proxima= {handleNext} />
+        <Paginacion anterior = {handlePrev} proxima= {handleNext} page= {page} />
     </div>
 }
 

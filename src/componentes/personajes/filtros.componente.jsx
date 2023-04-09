@@ -1,4 +1,3 @@
-
 import './filtros.css';
 
 const Filtros = ({inputRef, busqueda, value}) => {

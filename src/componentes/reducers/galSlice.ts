@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-
-
 interface Personaje {
     id: number,
     name: string,
@@ -13,7 +11,6 @@ interface initialType {
     personaje: Personaje[]
     favoritos: Personaje[]
     input: string,
-    
     loading: boolean,
     error:string
 }
@@ -22,7 +19,6 @@ const initialState: initialType = {
     personaje: [],
     favoritos: [],
     input: '',
- 
     loading: false,
     error:''
 }
@@ -44,8 +40,6 @@ export const getFiltrados= createAsyncThunk(
         return parseRes.results
     }
 )
-
-
 
 const galSlice = createSlice({
     name: 'personajes',
@@ -103,10 +97,6 @@ const galSlice = createSlice({
                 state.personaje=initialState.personaje;
                 state.error="No se enonctró ningún personaje con ese nombre";
             })
-
-
-
-
     }
 })
 
