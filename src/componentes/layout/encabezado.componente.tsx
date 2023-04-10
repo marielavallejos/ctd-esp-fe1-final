@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import { useAppSelector } from "../../redux/hooks";
 import './encabezado.css';
 
 /**
@@ -7,7 +6,7 @@ import './encabezado.css';
  *
  * Uso: `<Encabezado />`
  *
- * @returns {JSX.Element}
+ * @returns {JSX.Element} Encabezado de la página
  */
 const Encabezado = () => {
 

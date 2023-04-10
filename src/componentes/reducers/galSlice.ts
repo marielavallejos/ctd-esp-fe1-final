@@ -1,11 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-interface Personaje {
-    id: number,
-    name: string,
-    gender: string,
-    image: string,
-    url:string,
-}
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { Personaje } from "../../types/personaje.types"
 
 interface initialType {
     personaje: Personaje[]
@@ -57,7 +51,7 @@ const galSlice = createSlice({
         },
 
         //Filtro 
-        buscarPersonaje: (state, action) => {
+        buscarPersonaje: (state, action: PayloadAction<string>) => {
             state.input= action.payload
         },
         borrarFiltro: (state) => {
@@ -71,7 +65,7 @@ const galSlice = createSlice({
                 state.personaje= initialState.personaje;
                 state.error=initialState.error;
             })
-            .addCase(getPersonajes.fulfilled, (state, action) => {
+            .addCase(getPersonajes.fulfilled, (state, action: PayloadAction<Personaje[]>) => {
                 state.loading = false;
                 state.personaje = action.payload;
                 state.error=initialState.error;
@@ -87,7 +81,7 @@ const galSlice = createSlice({
                 state.personaje= initialState.personaje;
                 state.error=initialState.error;
             })
-            .addCase(getFiltrados.fulfilled, (state, action) => {
+            .addCase(getFiltrados.fulfilled, (state, action:  PayloadAction<Personaje[]>) => {
                 state.loading = false;
                 state.personaje = action.payload;
                 state.error=initialState.error;

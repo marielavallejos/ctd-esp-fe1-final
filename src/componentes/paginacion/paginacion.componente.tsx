@@ -1,16 +1,20 @@
 
 import './paginacion.css';
 
-
+interface PaginacionProps{
+    anterior: () => void;
+    proxima: () => void;
+    page: number;
+}
 /**
  * Componente que contiene los botones para paginar
  * 
  * Deberás agregar las propiedades necesarias para que funcione correctamente
  * 
- * 
- * @returns un JSX element 
+ *
+ * @returns {JSX.Element} Paginacion
  */
-const Paginacion = ({anterior, proxima, page}) => {
+const Paginacion = ({anterior, proxima, page}:PaginacionProps) => {
 
     
     return <div className="paginacion">
