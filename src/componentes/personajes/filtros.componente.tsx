@@ -12,7 +12,7 @@ interface FiltrosProps {
  * @param {Object} props Propiedades que hereda el componente
  * @param {React.RefObject<HTMLInputElement>} props.inputRef Elemento HTML donde se ingresa la busqueda
  * @param {function} props.busqueda Función para buscar personajes
- * @param {string} props.value Valor del elemento HTML donde el usuario ingresa el texto de búsqueda
+ * @param {string} props.value Valor del elemento HTML donde el usuario ingresa la búsqueda
  * @returns {JSX.Element} Filtro de personajes
  */
 

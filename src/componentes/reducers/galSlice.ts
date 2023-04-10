@@ -17,6 +17,13 @@ const initialState: initialType = {
     error:''
 }
 
+/**
+ * Función que realiza una petición a la API para obtener personajes por página
+ * @function getPersonajes
+ * @param {number} page Página de personajes de la API 
+ * @returns {Promise<Personaje[]>} Lista de personajes
+ */
+
 export const getPersonajes = createAsyncThunk(
     'galeriaPersonajes',
     async (page: number) => {
@@ -26,6 +33,12 @@ export const getPersonajes = createAsyncThunk(
     }
 )
 
+/**
+ * Función que realiza una petición a la API para obtener la lista de personajes por nombre
+ * @function getFiltrados
+ * @param {string} name Nombre del personaje buscado
+ * @returns {Promise<Personaje[]>} Lista de personajes por nombre
+ */
 export const getFiltrados= createAsyncThunk(
     'filtrados',
     async (name: string) => {
@@ -39,6 +52,12 @@ const galSlice = createSlice({
     name: 'personajes',
     initialState,
     reducers: {
+        /**
+         * Función que marca o desmarca un personaje como favorito
+         * @function marcarFavorito
+         * @param {initialType} state Estado actual 
+         * @param {PayloadAction<Personaje>} action Acción que contiene el personaje que se desea marcar o desmarcar
+        */
         marcarFavorito: (state, action) => {
             if(!state.favoritos.find(favorito => favorito.id === action.payload.id)){
                 state.favoritos.push(action.payload);
@@ -46,11 +65,15 @@ const galSlice = createSlice({
                 state.favoritos = state.favoritos.filter(favorito => favorito.id !== action.payload.id);
             }
         },
+        /**
+         * Función que borra todos los personajes marcados como favoritos
+         * @function borrarFavorito
+         * @param {initialType} state Estado actual
+         */
         borrarFavorito: (state) => {
             state.favoritos = initialState.favoritos;
         },
-
-        //Filtro 
+        
         buscarPersonaje: (state, action: PayloadAction<string>) => {
             state.input= action.payload
         },

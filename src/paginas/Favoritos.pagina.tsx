@@ -1,15 +1,13 @@
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { borrarFavorito } from "../componentes/reducers/galSlice";
-import { Personaje } from "../types/personaje.types";
 
 /**
  * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
  * 
- * Uso: 
- * ``` <PaginaFavoritos /> ```
+ * Vaciar favoritos: Resetea la página de favoritos al hacer click en el botón
  * 
- * @returns {JSX.Element} La pagina de favoritos
+ * @returns {JSX.Element} La pagina de favoritos *
  */
 const PaginaFavoritos = () => {
     const favoritos = useAppSelector(state => state.personajes.favoritos)

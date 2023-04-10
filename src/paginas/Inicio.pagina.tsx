@@ -28,7 +28,11 @@ const PaginaInicio = () => {
         dispatch(getPersonajes(page));
         inputRef?.current?.focus();
     }, [page, dispatch]);
-
+    
+    /**
+     * Limpia el filtro y carga los personajes de la primera página
+     * @returns {void}
+     */
 
     const limpiarFiltro = () => {
         setFiltro('');

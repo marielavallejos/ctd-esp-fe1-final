@@ -10,11 +10,9 @@ interface BotonFavProps {
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
  * 
- * Deberás tipar las propiedades si usas este componente
- * 
- * @param {Object} props Propiedades que se heredan
+ * @param {Object} props Propiedades 
  * @param {boolean} props.esFavorito Propiedad que indica si el personaje es favorito
- * @param {Object} props.onClick Objeto que se pasa como parámetro a persoFavorito 
+ * @param {Object} props.onClick Personaje que se pasa como parámetro a persoFavorito 
  * @returns {JSX.Element} Elemento botón marcar favoritos
  */
 

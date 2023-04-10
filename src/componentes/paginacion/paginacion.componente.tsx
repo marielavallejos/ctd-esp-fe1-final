@@ -7,11 +7,11 @@ interface PaginacionProps{
     page: number;
 }
 /**
- * Componente que contiene los botones para paginar
- * 
- * Deberás agregar las propiedades necesarias para que funcione correctamente
- * 
- *
+ * Componente que contiene los botones para paginar 
+ * @param {function} props.anterior - Función para el botón de "Anterior"
+ * @param {function} props.proxima - Función para el botón de "Siguiente"
+ * @param {number} props.page - Número de página actual para deshabilitar el botón de "Anterior"
+ * @param {boolean} props.disable- Indica si el botón debe estar deshabilitado o no
  * @returns {JSX.Element} Paginacion
  */
 const Paginacion = ({anterior, proxima, page}:PaginacionProps) => {

@@ -8,8 +8,7 @@ interface TarjetaPersonajeProps {
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
-
-    * @param {Objects} props propiedades que se heredan  
+    * @param {Object} props Propiedades que hereda el componente
     * @param {Object} props.personaje Objeto personaje
     * @returns {JSX.Element} Card de cada personaje
 */

@@ -8,8 +8,7 @@ interface grillaPersonajesProps {
 /**
  * Grilla de personajes para la pagina de inicio
  * 
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- * @param {Object} props Propiedades que se heredan
+ * @param {Object} props Propiedades que hereda el componente
  * @param {Array<Object>} props.personajes Array de personajes
  * @returns {JSX.Element} Galería de personajes
  */
